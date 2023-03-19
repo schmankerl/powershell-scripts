@@ -20,3 +20,6 @@ function Get-SSHProfiles {
         Write-Host " - $($_.Name) ($($_.Username)@$($_.Hostname):$($_.Port))"
     }
 }
+
+#Usage
+#Connect-SSHProfile [SSH_PROFILE_NAME]

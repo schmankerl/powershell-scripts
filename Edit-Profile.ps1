@@ -13,3 +13,6 @@ function Edit-Profile {
     $notepadPath = Join-Path $env:SystemRoot "notepad.exe"
     Start-Process $notepadPath -ArgumentList $profilePath
 }
+
+#Usage
+#Edit-Profile -Name [POWERSHELL_PROFILE_NAME]
