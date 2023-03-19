@@ -1,0 +1,14 @@
+[
+    {
+        "Name": "sshProfileName",
+        "Hostname": "hostname.com",
+        "Username": "username",
+        "Port": 22
+    },
+    {
+        "Name": "sshProfileName1",
+        "Hostname": "hostname.com1",
+        "Username": "username1",
+        "Port": 2222
+    }
+]
