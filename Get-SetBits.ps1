@@ -19,3 +19,6 @@ function Get-SetBits {
 
     return $set_bits
 }
+
+#Usage
+#Get-SetBits [BITMASK]
