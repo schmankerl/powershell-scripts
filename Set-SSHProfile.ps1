@@ -1,5 +1,7 @@
-function Set-SSHProfile {
-    param(
+function Set-SSHProfile 
+{
+    param
+    (
         [Parameter(Mandatory=$true)]
         [ValidateSet('add', 'edit', 'delete')]
         [string]$action,
@@ -22,8 +24,10 @@ function Set-SSHProfile {
 
     $sshProfiles = Get-Content -Path $configFilePath -Raw | ConvertFrom-Json
 
-    if ($action -eq 'add') {
-        if ($sshProfiles -ne $null -and ($sshProfiles | Where-Object { $_.Name -eq $name })) {
+    if ($action -eq 'add') 
+    {
+        if ($sshProfiles -ne $null -and ($sshProfiles | Where-Object { $_.Name -eq $name })) 
+        {
             Write-Error "A profile with name '$name' already exists."
             return
         }
@@ -32,9 +36,11 @@ function Set-SSHProfile {
         Write-Host "Profile '$name' added."
     }
 
-    if ($action -eq 'edit') {
+    if ($action -eq 'edit') 
+    {
         $profileIndex = ($sshProfiles | ForEach-Object { $_.Name }).IndexOf($name)
-        if ($profileIndex -eq -1) {
+        if ($profileIndex -eq -1) 
+        {
             Write-Error "No profile found with name '$name'."
             return
         }
@@ -44,7 +50,8 @@ function Set-SSHProfile {
         Write-Host "Profile '$name' updated."
     }
 
-    if ($action -eq 'delete') {
+    if ($action -eq 'delete') 
+    {
         $sshProfiles = $sshProfiles | Where-Object { $_.Name -ne $name }
         Write-Host "Profile '$name' removed."
     }
