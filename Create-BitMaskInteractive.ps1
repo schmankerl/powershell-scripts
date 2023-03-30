@@ -33,6 +33,7 @@ function Create-BitMaskInteractive {
             $checkboxes.Add($checkbox)
             
             $label = New-Object System.Windows.Forms.Label
+            $label.AutoSize = $true
             $label.Text = "Bit {0} ({1})" -f $index, [Math]::Pow(2, $index)
             $label.Location = [System.Drawing.Point]::new(10 + $c * 80, 35 + $r * 45)
             $label.Size = [System.Drawing.Size]::new(75, 20)
