@@ -25,7 +25,6 @@ function Create-BitMaskInteractive {
                 break
             }
             $checkbox = New-Object System.Windows.Forms.CheckBox
-            #$checkbox.Text = "Bit {0} ({1})" -f $index, [Math]::Pow(2, $index)
             $checkbox.Location = [System.Drawing.Point]::new(10 + $c * 80, 20 + $r * 45)
             $checkbox.Size = [System.Drawing.Size]::new(75, 20)
             $checkbox.Checked = $false
