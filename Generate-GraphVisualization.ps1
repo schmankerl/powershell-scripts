@@ -42,15 +42,17 @@ function Generate-GraphVisualization
     $dotFile = "graph.dot"
     @"
 digraph G {
-    node [shape=ellipse]
+    node [shape=box]
+    concentrate=true
     rankdir=LR
+    ordering="out"
     $($nodes -join "`n")
     $($edges -join "`n")
 }
 "@ | Set-Content -Path $dotFile
 
     # Generate a PNG image of the graph using GraphViz's dot.exe
-    Start-Process -FilePath $env:DOT -ArgumentList "-Tpng", $dotFile, "-O"
+    Start-Process -FilePath $env:DOT -ArgumentList "-Tsvg", $dotFile, "-O"
 }
 
 #Usage
