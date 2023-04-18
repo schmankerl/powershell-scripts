@@ -1,4 +1,4 @@
-#Function which takes nodes in a comma seperated list as input and then outputs a .png file with the help of GraphViz
+#Function which takes nodes in a comma seperated list as input and then outputs a .svg file with the help of GraphViz
 #Needs to have $env:DOT set to the path of GraphViz dot.exe
 function Generate-GraphVisualization 
 {
@@ -51,7 +51,7 @@ digraph G {
 }
 "@ | Set-Content -Path $dotFile
 
-    # Generate a PNG image of the graph using GraphViz's dot.exe
+    # Generate a SVG image of the graph using GraphViz's dot.exe
     Start-Process -FilePath $env:DOT -ArgumentList "-Tsvg", $dotFile, "-O"
 }
 
