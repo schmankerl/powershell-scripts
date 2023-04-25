@@ -50,3 +50,6 @@ digraph G {
     # Generate a SVG image of the graph using GraphViz's dot.exe
     Start-Process -FilePath $env:DOT -ArgumentList "-Tsvg", $dotFile, "-O"
 }
+
+#Usage
+# Generate-GraphVisualization -NodePairsFile "C:\path\to\node-pairs.txt"
