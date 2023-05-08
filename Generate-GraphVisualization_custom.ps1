@@ -1,4 +1,4 @@
-#Slightly modified version of Generate-GraphVisualization.ps1. Made to create node pairs from a file via regex matches
+#Slightly modified version of Generate-GraphVisualization.ps1; Made to create node pairs from a file via regex matches
 function Generate-GraphVisualization 
 {
     [CmdletBinding()]
@@ -11,7 +11,7 @@ function Generate-GraphVisualization
     )
 
     # Read node pairs from the input file
-    $nodePairs = Get-Content -Path $NodePairsFile | Where-Object { $_ -match "VALUES \(\d+,'(?<source>[^']+)','(?<target>[^']+)'"} | ForEach-Object { 
+    $nodePairs = Get-Content -Path $NodePairsFile | Where-Object { $_ -match "VALUES\(\d+,'(?<source>[^']+)','(?<target>[^']+)'"} | ForEach-Object { 
         $source = $matches["source"]
         $target = $matches["target"]
         "$source,$target"
@@ -38,12 +38,12 @@ function Generate-GraphVisualization
     $dotFile = "graph.dot"
     @"
 digraph G {
-    node [shape=box]
-    concentrate=true
-    rankdir=LR
-    ordering="out"
-    $($nodes -join "`n")
-    $($edges -join "`n")
+node [shape=box]
+concentrate="true"
+rankdir="LR"
+ordering="out"
+$($nodes -join "`n")
+$($edges -join "`n")
 }
 "@ | Set-Content -Path $dotFile
 
