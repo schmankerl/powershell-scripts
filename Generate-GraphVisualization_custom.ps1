@@ -39,9 +39,9 @@ function Generate-GraphVisualization
     @"
 digraph G {
 node [shape=box]
-concentrate="true"
-rankdir="LR"
-ordering="out"
+concentrate=true
+rankdir=LR
+ordering=out
 $($nodes -join "`n")
 $($edges -join "`n")
 }
