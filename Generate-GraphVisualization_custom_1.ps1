@@ -1,4 +1,4 @@
-#Slightly modified version of Generate-GraphVisualization_custom.ps1; Adds colors and a legends for said colors, shows cost of edge if cost > 1
+#Slightly modified version of Generate-GraphVisualization_custom.ps1; Adds colors and a legend for said colors, shows cost of edge if cost > 1
 function Generate-GraphVisualization 
 {
     [CmdletBinding()]
