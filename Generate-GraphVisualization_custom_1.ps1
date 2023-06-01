@@ -74,9 +74,9 @@ function Generate-GraphVisualization
         $transport = $nodePair.Transport
         $color = $transportColors[$transport]
         if ($cost -ne 1) {
-            "$sourceNode->$targetNode [label=`"Cost: $cost`", color=$color penwidth=2]"
+            "`"$sourceNode`"->`"$targetNode`" [label=`"Cost: $cost`", color=$color penwidth=2]"
         } else {
-            "$sourceNode->$targetNode [color=$color penwidth=2]"
+            "`"$sourceNode`"->`"$targetNode`" [color=$color penwidth=2]"
         }
     }
 
