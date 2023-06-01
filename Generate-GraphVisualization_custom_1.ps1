@@ -43,22 +43,28 @@ function Generate-GraphVisualization
         $sourceNodes += $sourceNode
         $targetNodes += $targetNode
         $transport = $nodePair.Transport
-        if (-not $nodeColors.ContainsKey($sourceNode)) {
-            if (-not $transportColors.ContainsKey($transport)) {
+        if (-not $nodeColors.ContainsKey($sourceNode)) 
+        {
+            if (-not $transportColors.ContainsKey($transport)) 
+            {
                 $color = $colorPalette[$transportColors.Count % $colorPalette.Count]
                 $transportColors[$transport] = $color
             }
-            else {
+            else 
+            {
                 $color = $transportColors[$transport]
             }
             $nodeColors[$sourceNode] = $color
         }
-        if (-not $nodeColors.ContainsKey($targetNode)) {
-            if (-not $transportColors.ContainsKey($transport)) {
+        if (-not $nodeColors.ContainsKey($targetNode)) 
+        {
+            if (-not $transportColors.ContainsKey($transport)) 
+            {
                 $color = $colorPalette[$transportColors.Count % $colorPalette.Count]
                 $transportColors[$transport] = $color
             }
-            else {
+            else 
+            {
                 $color = $transportColors[$transport]
             }
             $nodeColors[$targetNode] = $color
@@ -66,22 +72,29 @@ function Generate-GraphVisualization
     }
 
     # Create a list of unique nodes and edges from the source and target nodes
-    $nodes = $sourceNodes + $targetNodes | Select-Object -Unique
-    $edges = foreach ($nodePair in $nodePairs) {
+    # enclose every node/edge in double quotes to prevent misbehavior because of special chars (-)
+    $nodes = $sourceNodes + $targetNodes | Select-Object -Unique | ForEach-Object{
+        "`"$_`""
+    }
+    $edges = foreach ($nodePair in $nodePairs) 
+    {
         $sourceNode = $nodePair.Source
         $targetNode = $nodePair.Target
         $cost = $nodePair.Cost
         $transport = $nodePair.Transport
         $color = $transportColors[$transport]
-        if ($cost -ne 1) {
+        if ($cost -ne 1) 
+        {
             "`"$sourceNode`"->`"$targetNode`" [label=`"Cost: $cost`", color=$color penwidth=2]"
-        } else {
+        } else 
+        {
             "`"$sourceNode`"->`"$targetNode`" [color=$color penwidth=2]"
         }
     }
 
     # Create a legend
-    $legend = foreach ($transportColor in $transportColors.GetEnumerator()) {
+    $legend = foreach ($transportColor in $transportColors.GetEnumerator()) 
+    {
         $transportSystemID = $transportColor.Key
         $color = $transportColor.Value
         $legendColor = $color -replace "^\#", ""
