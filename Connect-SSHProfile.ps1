@@ -11,6 +11,7 @@ function Connect-SSHProfile($profileName)
 
         Write-Host "Connecting to $($sshProfile.Name)..."
         Invoke-Expression $sshCommand
+        $host.UI.RawUI.WindowTitle = "$($sshProfile.Username)"
     } 
     else { Write-Error "Profile does not exist: $profileName" }
 }
