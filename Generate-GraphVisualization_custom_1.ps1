@@ -105,10 +105,8 @@ function Generate-GraphVisualization
     $dotFile = "graph.dot"
     @"
 digraph G {
+graph [nodesep=0.5, concentrate=true, rankdir=LR, ordering=out]
 node [shape=box, style=filled, fontcolor=black]
-concentrate=true
-rankdir=LR
-ordering=out
 $($nodes -join "`n")
 $($edges -join "`n")
 $($legend -join "`n")
